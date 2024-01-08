@@ -1,3 +1,79 @@
 [
-  
+  {
+    "id": 1,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty12322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  },
+  {
+    "id": 1,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty1222322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  },
+  {
+    "id": 1,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty12223322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  },
+  {
+    "id": 1,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty122123322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  },
+  {
+    "id": 2,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty1221233322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  },
+  {
+    "id": 2,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty12212133322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  },
+  {
+    "id": 2,
+    "title": "Juguete21221223",
+    "description": "Made in China112212",
+    "price": 55200,
+    "thumbnail": "Ruta de imagen22211",
+    "code": "qwerty122122133322",
+    "stock": 100,
+    "status": true,
+    "category": "Juguetes11222212"
+  }
 ]

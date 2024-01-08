@@ -4,36 +4,13 @@ const fs = require("fs").promises;
 
 class ProductManager {
 
-    static lastId = 0;
+    //static lastId = 0;
 
     constructor(path) {
         this.products = [];
         this.path = path;
+        this.lastId = 0;
     }
-
-    async readFile() {
-        try {
-            const response = await fs.readFile(this.path, "utf-8")
-            //this.products = JSON.parse(response);
-            const responseArray = JSON.parse(response);
-            return responseArray;
-
-        } catch (error) {
-            console.log("Hubo un error al leer el archivo: ", error);
-        }
-    }
-
-    
-    async saveFile(responseArray) {
-        try {
-            const currentData = await this.readFile();
-            const newData = currentData.concat(responseArray);
-            await fs.writeFile(this.path, JSON.stringify(newData, null, 2));
-        } catch (error) {
-            console.log("Error al guardar el archivo: ", error)
-        }
-    }
-    
 
     /* TEST NEGATIVO
     async saveFile() {
@@ -61,7 +38,7 @@ class ProductManager {
         }
 
         const newProduct = {
-            id: ++ProductManager.lastId,
+            id: ++this.lastId,
             title,
             description,
             price,
@@ -80,6 +57,7 @@ class ProductManager {
         console.log(this.products);
     };
 
+    //Funcion para obtener un producto por ID:
     async getProductById(id) {
         try {
             const responseArray = await this.readFile();
@@ -95,7 +73,7 @@ class ProductManager {
         }
     }
 
-
+    //Funcion para actualizar un producto: Requiere ID y la nueva informacion.
     async updateProduct(id, updatedProduct) {
         try {
             const responseArray = await this.readFile();
@@ -111,6 +89,7 @@ class ProductManager {
         }
     }
 
+    //Funcion para eliminar un producto por ID:
     async deleteProduct(id) {
         try {
             const responseArray = await this.readFile();
@@ -121,6 +100,30 @@ class ProductManager {
             }
         } catch (error) {
             console.log("No se pudo borrar el archivo")
+        }
+    }
+
+    //Funcion para leer el array:
+    async readFile() {
+        try {
+            const response = await fs.readFile(this.path, "utf-8")
+            //this.products = JSON.parse(response);
+            const responseArray = JSON.parse(response);
+            return responseArray;
+
+        } catch (error) {
+            console.log("Hubo un error al leer el archivo: ", error);
+        }
+    }
+
+    //Funcion para guardar:
+    async saveFile(responseArray) {
+        try {
+            const currentData = await this.readFile();
+            const newData = currentData.concat(responseArray);
+            await fs.writeFile(this.path, JSON.stringify(newData, null, 2));
+        } catch (error) {
+            console.log("Error al guardar el archivo: ", error)
         }
     }
 };
