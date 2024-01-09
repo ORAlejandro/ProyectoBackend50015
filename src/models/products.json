@@ -1,79 +1,57 @@
 [
   {
     "id": 1,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
-    "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty12322",
+    "title": "Papitas ASD",
+    "description": "Cebolla ASD",
+    "price": 5500,
+    "thumbnail": "Ruta de imagen",
+    "code": "qwerty1",
     "stock": 100,
     "status": true,
-    "category": "Juguetes11222212"
-  },
-  {
-    "id": 1,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
-    "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty1222322",
-    "stock": 100,
-    "status": true,
-    "category": "Juguetes11222212"
-  },
-  {
-    "id": 1,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
-    "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty12223322",
-    "stock": 100,
-    "status": true,
-    "category": "Juguetes11222212"
-  },
-  {
-    "id": 1,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
-    "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty122123322",
-    "stock": 100,
-    "status": true,
-    "category": "Juguetes11222212"
+    "category": "Snacks"
   },
   {
     "id": 2,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
-    "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty1221233322",
+    "title": "Doritos",
+    "description": "Picantes",
+    "price": 5500,
+    "thumbnail": "Ruta de imagen",
+    "code": "qwerty2",
     "stock": 100,
     "status": true,
-    "category": "Juguetes11222212"
+    "category": "Snacks"
   },
   {
-    "id": 2,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
-    "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty12212133322",
+    "id": 3,
+    "title": "Doritos ASD",
+    "description": "Picantes ASD",
+    "price": 5500,
+    "thumbnail": "Ruta de imagen",
+    "code": "qwerty2",
     "stock": 100,
     "status": true,
-    "category": "Juguetes11222212"
+    "category": "Snacks"
   },
   {
-    "id": 2,
-    "title": "Juguete21221223",
-    "description": "Made in China112212",
+    "id": 4,
+    "title": "Juguete",
+    "description": "Made in China",
     "price": 55200,
-    "thumbnail": "Ruta de imagen22211",
-    "code": "qwerty122122133322",
+    "thumbnail": "Ruta de imagen",
+    "code": "qwerty4",
     "stock": 100,
     "status": true,
-    "category": "Juguetes11222212"
+    "category": "Juguetes"
+  },
+  {
+    "id": 5,
+    "title": "Botella de Agua",
+    "description": "Reciclable",
+    "price": 2500,
+    "thumbnail": "Ruta de imagen",
+    "code": "qwerty5",
+    "stock": 100,
+    "status": true,
+    "category": "Bebidas"
   }
 ]

@@ -7,7 +7,7 @@ router.get("/products", async (req, res) => {
     try {
         const responseArray = await productManager.readFile();
         const limit = parseInt(req.query.limit);
-        if(limit) {
+        if (limit) {
             const limitArray = responseArray.slice(0, limit)
             return res.send(limitArray);
         } else {
@@ -23,7 +23,7 @@ router.get("/products/:pid", async (req, res) => {
     try {
         let pid = parseInt(req.params.pid);
         const finded = await productManager.getProductById(pid);
-        if(finded) {
+        if (finded) {
             return res.send(finded)
         } else {
             return res.send("ID dont exist");
@@ -35,30 +35,30 @@ router.get("/products/:pid", async (req, res) => {
 
 
 router.post("/products", async (req, res) => {
-    const {title, description, price, thumbnail, code, stock, status, category} = req.body;
-    await productManager.addProduct({title, description, price, thumbnail, code, stock, status, category});
-    res.send({status: "success", message: "Product created"});
+    const { title, description, price, thumbnail, code, stock, status, category } = req.body;
+    await productManager.addProduct({ title, description, price, thumbnail, code, stock, status, category });
+    res.send({ status: "success", message: "Product created" });
 })
 
-
-/*
-router.post("/products", async (req, res) => {
+router.put("/products/:pid", async (req, res) => {
     try {
-        const newProduct = req.body;
-        const responseArray = await productManager.readFile();
-        const responseNewProduct = await productManager.addProduct(newProduct);
-        if(responseArray) {
-            responseArray.push(responseNewProduct);
-            res.send({status: "success", message: "Product created"})
-        } else {
-            console.log("Problem with the new product");
-            res.status(500).send({status: "error", message: "Product error"});
-        }
+        const productId = parseInt(req.params.pid);
+        const modifiedProduct = req.body;
+        await productManager.updateProduct(productId, modifiedProduct);
+        res.json({status: "success", message: "Product correctly modified"});
     } catch (error) {
-        console.error("Error to create a new product");
-        res.status(500).send({status: "error", message: "Server error 500"});
+        res.json({status: "error", message: "You cant update product"})
     }
 })
-*/
+
+router.delete("/products/:pid", async (req, res) => {
+    try {
+        const productId = parseInt(req.params.pid);
+        await productManager.deleteProduct(productId);
+        res.json({status: "success", message: "Product deleted"})
+    } catch (error) {
+        res.json({status: "error", message: "You cant delete product"})
+    }
+})
 
 module.exports = router;
