@@ -12,5 +12,5 @@ app.use("/api", productsRouter);
 app.use("/api", cartsRouter);
 
 app.listen(PUERTO, () => {
-    console.log(`Escucha en http://localhost:${PUERTO}`);
+    console.log(`Escuchando en http://localhost:${PUERTO}`);
 });
