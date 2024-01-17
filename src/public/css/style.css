@@ -62,13 +62,22 @@ body {
 input {
   max-width: 300px;
   width: 100%;
+  padding: 15px;
+  margin: 5px;
+}
+
+.selectStyle {
+  max-width: 150px;
+  width: 100%;
+  padding: 15px;
+  margin: 5px;
 }
 
 .btnStyle {
   margin-top: 10px;
   display: inline-block;
   padding: 10px 20px;
-  font-size: 12px;
+  font-size: 15px;
   text-align: center;
   text-decoration: none;
   cursor: pointer;
