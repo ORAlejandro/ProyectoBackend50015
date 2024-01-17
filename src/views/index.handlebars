@@ -1,3 +1,12 @@
-<h1>INDEX</h1>
+<h1>Products</h1>
+<div>
+    {{#each products}}
+    <div class="cards">
+        <p> {{this.title}} </p>
+        <p> {{this.description}} </p>
+        <p> {{this.price}} </p>
+    </div>
+    {{/each}}
+</div>
 
 <script src="js/main.js"></script>

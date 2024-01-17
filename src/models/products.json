@@ -1,8 +1,8 @@
 [
   {
     "id": 1,
-    "title": "Papitas ASD",
-    "description": "Cebolla ASD",
+    "title": "Papitas",
+    "description": "De cebolla",
     "price": 5500,
     "thumbnail": "Ruta de imagen",
     "code": "qwerty1",
@@ -23,8 +23,8 @@
   },
   {
     "id": 3,
-    "title": "Doritos ASD",
-    "description": "Picantes ASD",
+    "title": "Doritos",
+    "description": "Clasicos",
     "price": 5500,
     "thumbnail": "Ruta de imagen",
     "code": "qwerty2",
@@ -34,23 +34,23 @@
   },
   {
     "id": 4,
-    "title": "Juguete",
-    "description": "Made in China",
+    "title": "Chizzzito",
+    "description": "De maizzzz",
     "price": 55200,
     "thumbnail": "Ruta de imagen",
     "code": "qwerty4",
     "stock": 100,
     "status": true,
-    "category": "Juguetes"
+    "category": "Snacks"
   },
   {
     "id": 5,
-    "title": "Botella de Agua",
-    "description": "Reciclable",
-    "price": 2500,
-    "thumbnail": "Ruta de imagen",
+    "title": "Coca Cola",
+    "description": "Retornable",
+    "price": "2500",
+    "thumbnail": "Sin Imagen",
     "code": "qwerty5",
-    "stock": 100,
+    "stock": "25",
     "status": true,
     "category": "Bebidas"
   }
