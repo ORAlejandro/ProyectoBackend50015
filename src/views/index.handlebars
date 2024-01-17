@@ -1,10 +1,10 @@
-<h1>Products</h1>
-<div>
+<h1 class="titleIndex">Products</h1>
+<div class="containerCards">
     {{#each products}}
     <div class="cards">
-        <p> {{this.title}} </p>
-        <p> {{this.description}} </p>
-        <p> {{this.price}} </p>
+        <p class="titleCards"> {{this.title}} </p>
+        <p class="descriptionCards"> {{this.description}} </p>
+        <p class="priceCards"> Precio: ${{this.price}} </p>
     </div>
     {{/each}}
 </div>

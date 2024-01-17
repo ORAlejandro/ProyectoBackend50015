@@ -16,7 +16,7 @@ const renderProductos = (productos) => {
                 <p>Id ${item.id} </p>
                 <p>Titulo ${item.title} </p>
                 <p>Precio ${item.price} </p>
-                <button> Eliminar </button>
+                <button class="btnStyle"> Eliminar </button>
         
         `;
         contenedorProductos.appendChild(card);
