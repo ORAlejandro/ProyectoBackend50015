@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const ProductManager = require("../controller/product-manager.js");
+const ProductManager = require("../dao/fs/product-manager.js");
 const productManager = new ProductManager("./src/models/products.json");
 
 router.get("/", async (req, res) => {
