@@ -25,6 +25,24 @@ app.use("/api", cartsRouter);
 app.use("/", viewsRouter);
 
 //Listen
-app.listen(PUERTO, () => {
+const httpServer = app.listen(PUERTO, () => {
     console.log(`Servidor escuchando en el puerto ${PUERTO}`);
+});
+
+const io = new socket.Server(httpServer);
+
+const MessageModel = require("./dao/models/message.model.js");
+
+io.on("connection", (socket) => {
+    console.log("Nuevo usuario conectado");
+
+    socket.on("message", async data => {
+
+        await MessageModel.create(data);
+
+        const messages = await MessageModel.find();
+        console.log(messages);
+        io.sockets.emit("message", messages);
+     
+    })
 });
