@@ -1,0 +1,17 @@
+<h1>Listado de productos:</h1>
+<ul>
+    {{#each finalListProducts}}
+        <li> {{this.title}} </li>
+    {{/each}}
+</ul>
+
+{{#if hasNextPage}}
+    <a href="/products?page={{nextPage}}"> Siguiente </a>
+{{/if}}
+
+{{#if hasPrevPage}}
+    <a href="/pizzas?page={{prevPage}}"> Anterior </a>
+{{/if}}
+
+<p>Pagina actual: {{currentPage}}</p>
+<p>Paginas totales: {{totalPages}}</p>
