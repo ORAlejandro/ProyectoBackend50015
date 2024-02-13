@@ -4,15 +4,23 @@ const router = express.Router();
 const ProductManager = require("../dao/db/product-manager-db.js");
 const productManager = new ProductManager();
 
-router.get("/products", async (req, res) => {
+const ProductModel = require("../dao/models/product.model.js");
+
+router.get("/products", async (req, res) => { 
     try {
-        const limit = req.query.limit;
-        const resProducts = await productManager.getProducts();
-        if (limit) {
-            res.json(resProducts.slice(0, limit));
-        } else {
-            res.json(resProducts);
-        }
+        const page = req.query.page || 1;
+        const limit = req.query.limit || 10;
+        const sort = req.query.sort || null;
+        const query = req.query.query;
+        //const limit = req.query.limit;
+        //const resProducts = await productManager.getProducts();
+        const resProductPaginate = await ProductModel.paginate({}, {limit, page, sort, query});
+        res.json(resProductPaginate);
+        //if (limit) {
+        //    res.json(resProducts.slice(0, limit));
+        //} else {
+        //    res.json(resProducts);
+        //}
     } catch (error) {
         console.error("ERROR: No se pudo obtener el producto", error);
         res.status(500).json({error: "ERROR: Error interno del servidor"})
