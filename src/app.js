@@ -7,8 +7,8 @@ require("./database.js");
 
 const productsRouter = require("./routes/products.router");
 const cartsRouter = require("./routes/carts.router.js");
+const viewsRouter = require("./routes/views.router.js");
 const chatRouter = require("./routes/chat.router.js");
-const productsHbsRouter = require("./routes/products.hbs.router.js");
 
 //Middlewares
 app.use(express.urlencoded({extended: true}));
@@ -23,9 +23,9 @@ app.set("views", "./src/views");
 //Routes
 app.use("/api", productsRouter);
 app.use("/api", cartsRouter);
-//Routes renderizadas en hbs
+app.use("/", viewsRouter);
+
 app.use("/", chatRouter);
-app.use("/", productsHbsRouter);
 
 //Listen
 const httpServer = app.listen(PUERTO, () => {

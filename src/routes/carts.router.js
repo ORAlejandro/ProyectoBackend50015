@@ -19,7 +19,7 @@ router.post("/carts", async (req, res) => {
 router.get("/carts/:cid", async (req, res) => {
     const cartId = req.params.cid;
     try {
-        const cart = await CartModel.findById(cartId);
+        const cart = await CartModel.findById(cartId)
         if(!cart) {
             console.log("ERROR: No existe un carrito con ese id");
             return res.status(406).json(
