@@ -9,7 +9,6 @@ const productsRouter = require("./routes/products.router");
 const cartsRouter = require("./routes/carts.router.js");
 const chatRouter = require("./routes/chat.router.js");
 const productsHbsRouter = require("./routes/products.hbs.router.js");
-const cartsHbsRouter = require("./routes/carts.hbs.router.js");
 
 //Middlewares
 app.use(express.urlencoded({extended: true}));
@@ -27,7 +26,6 @@ app.use("/api", cartsRouter);
 //Routes renderizadas en hbs
 app.use("/", chatRouter);
 app.use("/", productsHbsRouter);
-app.use("/", cartsHbsRouter);
 
 //Listen
 const httpServer = app.listen(PUERTO, () => {
