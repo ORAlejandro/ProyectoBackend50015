@@ -8,6 +8,7 @@ require("./database.js");
 const productsRouter = require("./routes/products.router");
 const cartsRouter = require("./routes/carts.router.js");
 const viewsRouter = require("./routes/views.router.js");
+
 const chatRouter = require("./routes/chat.router.js");
 
 //Middlewares
@@ -21,15 +22,15 @@ app.set("view engine", "handlebars");
 app.set("views", "./src/views");
 
 //Routes
-app.use("/api", productsRouter);
-app.use("/api", cartsRouter);
+app.use("/api/products", productsRouter);
+app.use("/api/carts", cartsRouter);
 app.use("/", viewsRouter);
 
 app.use("/", chatRouter);
 
 //Listen
 const httpServer = app.listen(PUERTO, () => {
-    console.log(`Servidor escuchando en el puerto ${PUERTO}`);
+    console.log(`Servidor escuchando en http://localhost:${PUERTO}`);
 });
 
 const io = new socket.Server(httpServer);

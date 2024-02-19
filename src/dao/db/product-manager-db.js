@@ -35,14 +35,49 @@ class ProductManager {
         }
     }
 
-    async getProducts() {
+    async getProducts({ limit = 10, page = 1, sort, query } = {}) {
         try {
-            const products = await ProductModel.find();
+            const skip = (page - 1) * limit;
 
-            return products;
+            let queryOptions = {};
 
+            if (query) {
+                queryOptions = { category: query };
+            }
+
+            const sortOptions = {};
+            if (sort) {
+                if (sort === 'asc' || sort === 'desc') {
+                    sortOptions.price = sort === 'asc' ? 1 : -1;
+                }
+            }
+
+            const products = await ProductModel
+                .find(queryOptions)
+                .sort(sortOptions)
+                .skip(skip)
+                .limit(limit);
+
+            const totalProducts = await ProductModel.countDocuments(queryOptions);
+
+            const totalPages = Math.ceil(totalProducts / limit);
+            const hasPrevPage = page > 1;
+            const hasNextPage = page < totalPages;
+
+            return {
+                docs: products,
+                totalPages,
+                prevPage: hasPrevPage ? page - 1 : null,
+                nextPage: hasNextPage ? page + 1 : null,
+                page,
+                hasPrevPage,
+                hasNextPage,
+                prevLink: hasPrevPage ? `/api/products?limit=${limit}&page=${page - 1}&sort=${sort}&query=${query}` : null,
+                nextLink: hasNextPage ? `/api/products?limit=${limit}&page=${page + 1}&sort=${sort}&query=${query}` : null,
+            };
         } catch (error) {
             console.log("ERROR: No se pudo obtener los productos", error);
+            throw error;
         }
     }
 
@@ -84,13 +119,13 @@ class ProductManager {
     async deleteProduct(id) {
         try {
             const deleted = await ProductModel.findByIdAndDelete(id);
+
             if (!deleted) {
                 console.log("ERROR: No se encontro el producto para eliminar");
                 return null;
             }
-
+            
             console.log("Producto eliminado correctamente");
-
         } catch (error) {
             console.log("ERROR: No se pudo eliminar el producto", error);
         }

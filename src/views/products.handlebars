@@ -1,15 +1,15 @@
 <h1 class="titleProducts">Listado de productos:</h1>
 <div class="divFlex">
-    {{#each products}}
-        <div class="divMain">
-            <p class="divTitle"> {{this.title}} </p>
-            <p class="divDescription"> {{this.description}} </p>
-            <p class="divPrice"> ${{this.price}} </p>
-            <div class="flexBtn">
-                <button class="divBtn"> Agregar </button>
-            </div>
+{{#each products}}
+    <div class="divMain">
+        <p class="divTitle"> {{this.title}} </p>
+        <p class="divDescription"> {{this.description}} </p>
+        <p class="divPrice"> ${{this.price}} </p>
+        <div class="flexBtn">
+            <button class="divBtn"> Agregar </button>
         </div>
-    {{/each}}
+    </div>
+{{/each}}
 </div>
 
 <div class="prevAndNext">

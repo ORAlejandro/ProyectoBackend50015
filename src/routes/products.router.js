@@ -1,33 +1,41 @@
 const express = require("express");
 const router = express.Router();
-
 const ProductManager = require("../dao/db/product-manager-db.js");
 const productManager = new ProductManager();
 
-const ProductModel = require("../dao/models/product.model.js");
-
-router.get("/products", async (req, res) => { 
+router.get("/", async (req, res) => {
     try {
-        const page = req.query.page || 1;
-        const limit = req.query.limit || 10;
-        const sort = req.query.sort || null;
-        const query = req.query.query;
-        //const limit = req.query.limit;
-        //const resProducts = await productManager.getProducts();
-        const resProductPaginate = await ProductModel.paginate({}, {limit, page, sort, query});
-        res.json(resProductPaginate);
-        //if (limit) {
-        //    res.json(resProducts.slice(0, limit));
-        //} else {
-        //    res.json(resProducts);
-        //}
-    } catch (error) {
-        console.error("ERROR: No se pudo obtener el producto", error);
-        res.status(500).json({error: "ERROR: Error interno del servidor"})
-    }
-})
+        const { limit = 10, page = 1, sort, query } = req.query;
 
-router.get("/products/:pid", async (req, res) => {
+        const products = await productManager.getProducts({
+            limit: parseInt(limit),
+            page: parseInt(page),
+            sort,
+            query,
+        });
+
+        res.json({
+            status: 'success',
+            payload: products,
+            totalPages: products.totalPages,
+            prevPage: products.prevPage,
+            nextPage: products.nextPage,
+            page: products.page,
+            hasPrevPage: products.hasPrevPage,
+            hasNextPage: products.hasNextPage,
+            prevLink: products.hasPrevPage ? `/api/products?limit=${limit}&page=${products.prevPage}&sort=${sort}&query=${query}` : null,
+            nextLink: products.hasNextPage ? `/api/products?limit=${limit}&page=${products.nextPage}&sort=${sort}&query=${query}` : null,
+        });
+
+    } catch (error) {
+        console.error("ERROR: Error al obtener productos", error);
+        res.status(500).json(
+            {status: 'error', error: "Error interno del servidor"}
+        );
+    }
+});
+
+router.get("/:pid", async (req, res) => {
     const id = req.params.pid;
 
     try {
@@ -44,39 +52,51 @@ router.get("/products/:pid", async (req, res) => {
     }
 })
 
-router.post("/products", async (req, res) => {
+router.post("/", async (req, res) => {
     const newProductA = req.body;
     
     try {
         await productManager.addProduct(newProductA);
+
         res.status(201).json({message: "Producto agregado exitosamente"})
+
     } catch (error) {
+
         console.log("ERROR: Error al agregar el producto", error);
+
         res.status(500).json({error: "ERROR: Error al intentar crear el producto"})
     }
 })
 
-router.put("/products/:pid", async (req, res) => {
+router.put("/:pid", async (req, res) => {
     const id = req.params.pid;
     const updatedProduct = req.body;
 
     try {
         await productManager.updateProduct(id, updatedProduct);
+
         res.json({message: "Producto actualizado exitosamente"})
+
     } catch (error) {
+
         console.error("ERROR: No se pudo actualizar el producto", error);
+
         res.status(500).json({error: "ERROR: Error del servidor al actualizar producto"})
     }
 })
 
-router.delete("/products/:pid", async (req, res) => {
+router.delete("/:pid", async (req, res) => {
     const id = req.params.pid;
 
     try {
         await productManager.deleteProduct(id);
+
         res.json({message: "Producto eliminado exitosamente"})
+
     } catch (error) {
+
         console.error("ERROR: No se pudo eliminar el producto")
+        
         res.status(500).json({error: "ERROR: Error del servidor al intentar eliminar un producto"})
     }
 })
