@@ -124,7 +124,7 @@ class ProductManager {
                 console.log("ERROR: No se encontro el producto para eliminar");
                 return null;
             }
-            
+
             console.log("Producto eliminado correctamente");
         } catch (error) {
             console.log("ERROR: No se pudo eliminar el producto", error);
