@@ -122,3 +122,25 @@ body {
 a {
   text-decoration: none;
 }
+
+/* CARTS.HANDLEBARS */
+.h1CartCid {
+  text-align: center;
+  color: #663399;
+  margin-bottom: 15px;
+}
+
+.cartContainer {
+  padding: 20px 30px;
+}
+
+.flexCart {
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+}
+
+.cartProduct {
+  text-transform: uppercase;
+  text-align: center;
+}

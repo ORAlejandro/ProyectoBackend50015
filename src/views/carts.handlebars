@@ -1,8 +1,9 @@
-<h1>Tu carrito:</h1>
-
+<h1 class="h1CartCid">Tu carrito</h1>
+<div class="flexCart">
 {{#each products}}
-    <div>
-        <p>Producto: {{this.product.title}}</p>
-        <p>Cantidad: {{this.quantity}}</p>
+    <div class="cartContainer">
+        <p class="cartProduct"> {{this.product.title}} </p>
+        <p class="cartQuantity">Cantidad: {{this.quantity}}</p>
     </div>
 {{/each}}
+</div>
