@@ -4,7 +4,7 @@
 }
 
 body {
-  background-color: #f2f2f2;
+  background-color: #f5f5f5;
 }
 
 .h1Chat {
@@ -126,8 +126,8 @@ a {
 /* CARTS.HANDLEBARS */
 .h1CartCid {
   text-align: center;
-  color: #663399;
   margin-bottom: 15px;
+  font-weight:400;
 }
 
 .cartContainer {
@@ -138,9 +138,15 @@ a {
   display: flex;
   flex-direction: column;
   align-items:center;
+  margin: 10px auto;
+  border: 1px solid #cccccc;
+  width: 350px;
+  background-color: #ececec;
+  border-radius: 6px;
 }
 
 .cartProduct {
   text-transform: uppercase;
   text-align: center;
+  font-weight: bold;
 }

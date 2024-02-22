@@ -1,9 +1,10 @@
-<h1 class="h1CartCid">Tu carrito</h1>
+<h1 class="h1CartCid">🛒 - Tu carrito</h1>
 <div class="flexCart">
 {{#each products}}
     <div class="cartContainer">
         <p class="cartProduct"> {{this.product.title}} </p>
         <p class="cartQuantity">Cantidad: {{this.quantity}}</p>
+        <hr>
     </div>
 {{/each}}
 </div>
