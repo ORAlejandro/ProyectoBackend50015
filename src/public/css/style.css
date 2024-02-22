@@ -7,6 +7,8 @@ body {
   background-color: #f5f5f5;
 }
 
+/* CHAT */
+
 .h1Chat {
   font-size: 37px;
   color: #4B0082;
@@ -62,10 +64,11 @@ body {
   background-color: #dbdcdd;
 }
 
+/* PRODUCTS */
+
 .titleProducts {
-  color:#663399;
   text-align: center;
-  font-size: 40px;
+  font-weight:400;
   margin-bottom: 25px;
 }
 
@@ -76,15 +79,18 @@ body {
 }
 
 .divMain {
-  background-color: #b4a0c9;
-  border: 1px solid black;
-  border-radius: 3px;
-  margin: 5px;
-  padding: 25px;
+  border: 1px solid #cccccc;
+  width: 350px;
+  background-color: #ececec;
+  border-radius: 6px;
+  margin: 10px 10px;
+  padding-top: 40px;
+  padding-bottom: 40px;
 }
 
 .prevAndNext {
   text-align: center;
+  margin: 10px auto;
 }
 
 .currentPageStyle {
@@ -95,15 +101,19 @@ body {
   text-align: center;
   font-size: 25px;
   text-transform: uppercase;
+  margin-bottom: 6px;
 }
 
 .divDescription {
   text-align: center;
+  margin-bottom: 6px;
 }
 
 .divPrice {
   text-align: center;
+  font-size: 1.7rem;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
 .flexBtn {
@@ -113,14 +123,38 @@ body {
 }
 
 .divBtn {
-  padding: 10px 20px;
-  border-radius: 6px;
+  text-transform: uppercase;
   cursor: pointer;
-  margin-top: 10px;
+  padding: 10px 30px;
+  border: solid 1px #cccccc;
+  border-radius: 10px;
+  background-color: #f5f5f5;
+}
+
+.divBtn:hover{
+  background-color: #7bbb85;
+  color: white;
+}
+
+.divBtn:active{
+  background-color: #3cb64e;
+  color: white;
+}
+
+.antStyle:hover{
+  color: #37b14b;
+}
+
+.sigStyle:hover{
+  color: #37b14b;
 }
 
 a {
   text-decoration: none;
+}
+
+a:visited{
+  color: #000000;
 }
 
 /* CARTS.HANDLEBARS */

@@ -1,25 +1,26 @@
-<h1 class="titleProducts">Listado de productos:</h1>
+<h1 class="titleProducts">⭐ - Nuestros Productos</h1>
 <div class="divFlex">
-{{#each products}}
+    {{#each products}}
     <div class="divMain">
         <p class="divTitle"> {{this.title}} </p>
         <p class="divDescription"> {{this.description}} </p>
         <p class="divPrice"> ${{this.price}} </p>
         <div class="flexBtn">
-            <button class="divBtn"> Agregar </button>
+            <button class="divBtn">Agregar</button>
         </div>
     </div>
-{{/each}}
+    {{/each}}
 </div>
 
 <div class="prevAndNext">
     {{#if hasPrevPage}}
-        <a href="/products?page={{prevPage}}"> Anterior </a>
+    <a class="antStyle" href="/products?page={{prevPage}}"> ⬅ Anterior</a>
     {{/if}}
 
     {{#if hasNextPage}}
-        <a href="/products?page={{nextPage}}"> Siguiente </a>
+    <a class="sigStyle" href="/products?page={{nextPage}}">Siguiente ➡</a>
     {{/if}}
 </div>
+
 
 <p class="currentPageStyle">Estas en la pagina {{currentPage}} de {{totalPages}}</p>
