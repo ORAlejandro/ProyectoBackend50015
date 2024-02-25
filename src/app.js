@@ -2,19 +2,32 @@ const express = require("express");
 const app = express();
 const exphbs = require("express-handlebars");
 const socket = require("socket.io");
+const cookieParser = require("cookie-parser");
+const session = require("express-session");
+const MongoStore = require("connect-mongo");
 const PUERTO = 8080;
 require("./database.js");
 
 const productsRouter = require("./routes/products.router");
 const cartsRouter = require("./routes/carts.router.js");
 const viewsRouter = require("./routes/views.router.js");
-
 const chatRouter = require("./routes/chat.router.js");
+const userRouter = require("./routes/user.router.js");
+const sessionRouter = require("./routes/sessions.router.js");
 
 //Middlewares
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());
 app.use(express.static("./src/public"));
+app.use(cookieParser());
+app.use(session({
+    secret: "secretCoder",
+    resave: true,
+    saveUninitialized: true,
+    store: MongoStore.create({
+        mongoUrl: "mongodb+srv://aleortega:coderhouse@cluster0.oprbhbr.mongodb.net/ecommerce?retryWrites=true&w=majority"
+    })
+}))
 
 //CFG Handlebars
 app.engine("handlebars", exphbs.engine());
@@ -25,8 +38,9 @@ app.set("views", "./src/views");
 app.use("/api/products", productsRouter);
 app.use("/api/carts", cartsRouter);
 app.use("/", viewsRouter);
-
 app.use("/", chatRouter);
+app.use("/api/users", userRouter);
+app.use("/api/sessions", sessionRouter);
 
 //Listen
 const httpServer = app.listen(PUERTO, () => {
