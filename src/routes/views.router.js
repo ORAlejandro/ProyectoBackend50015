@@ -63,4 +63,25 @@ router.get("/carts/:cid", async (req, res) => {
     }
 })
 
+router.get("/login", (req, res) => {
+    if(req.session.login) {
+        return res.redirect("/profile");
+    }
+    res.render("login");
+})
+
+router.get("/profile", (req, res) => {
+    if(!req.session.login) {
+        return res.redirect("/login");
+    }
+    res.render("profile", { user: req.session.user });
+})
+
+router.get("/register", (req, res) => {
+    if(req.session.login) {
+        return res.redirect("/profile");
+    }
+    res.render("register");
+})
+
 module.exports = router;
