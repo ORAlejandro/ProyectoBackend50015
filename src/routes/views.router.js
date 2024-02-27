@@ -5,6 +5,10 @@ const CartManager = require("../dao/db/cart-manager-db.js");
 const productManager = new ProductManager();
 const cartManager = new CartManager();
 
+router.get("/", (req, res) => {
+    res.redirect("/login");
+});
+
 //Renderizar productos por paginas
 router.get("/products", async (req, res) => {
     try {
@@ -18,7 +22,7 @@ router.get("/products", async (req, res) => {
             const { _id, ...rest } = product.toObject();
             return rest;
         });
-
+        //res.render("profile", { user: req.session.user });
         res.render("products", {
             products: newArray,
             hasPrevPage: products.hasPrevPage,
@@ -26,7 +30,8 @@ router.get("/products", async (req, res) => {
             prevPage: products.prevPage,
             nextPage: products.nextPage,
             currentPage: products.page,
-            totalPages: products.totalPages
+            totalPages: products.totalPages,
+            user: req.session.user
         });
     } catch (error) {
         console.log("ERROR: No se pudo obtener el producto", error);

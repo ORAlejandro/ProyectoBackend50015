@@ -21,8 +21,8 @@ router.post("/login", async (req, res) => {
                     first_name: usuario.first_name,
                     last_name: usuario.last_name,
                 };
-
-                res.redirect("/profile");
+                
+                res.redirect("/products");
 
             } else {
                 res.status(401).send({ error: "Contraseña no valida" });

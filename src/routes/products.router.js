@@ -5,6 +5,11 @@ const productManager = new ProductManager();
 
 router.get("/", async (req, res) => {
     try {
+        
+        if(!req.session.login) {
+            return res.redirect("/login");
+        }
+
         const { limit = 10, page = 1, sort, query } = req.query;
 
         const products = await productManager.getProducts({
