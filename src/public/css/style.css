@@ -64,7 +64,7 @@ body {
   background-color: #dbdcdd;
 }
 
-/* PRODUCTS */
+/* PRODUCTS.HANDLEBARS */
 
 .titleProducts {
   text-align: center;
@@ -149,12 +149,38 @@ body {
   color: #37b14b;
 }
 
-a {
-  text-decoration: none;
+.topProducts {
+  display: flex;
+  flex-direction: row;
+  justify-content: end;
+  align-items: center;
+  background-color: #BEFD73;
+  padding-top: 13px;
+  padding-bottom: 13px;
+  margin-bottom: 10px;
 }
 
-a:visited{
-  color: #000000;
+.firstLastName {
+  text-decoration: none;
+  color: rgb(0, 95, 0);
+}
+.cerrarSesionStyle {
+  border: 1px solid #c9f79c;
+  background-color: #EAFED6;
+  text-decoration: none;
+  text-transform: capitalize;
+  padding: 10px 20px;
+  margin-left: 25px;
+  margin-right: 25px;
+  border-radius: 10px;
+}
+
+.cerrarSesionStyle:hover{
+  background-color: #8dcf4b;
+}
+
+.rolStyleProducts {
+  text-transform: capitalize;
 }
 
 /* CARTS.HANDLEBARS */

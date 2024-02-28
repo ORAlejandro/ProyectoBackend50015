@@ -1,6 +1,8 @@
-<h1 class="titleProducts">⭐ - Nuestros Productos</h1>
-<p>Bienvenido/a <a href="/profile"> {{user.first_name}} {{user.last_name}} </a>! Rol: {{user.rol}}</p>
-<a href="/api/sessions/logout">Cerrar Sesion</a>
+<div class="topProducts">
+    <p>Bienvenido/a <a class="firstLastName" href="/profile"> {{user.first_name}} {{user.last_name}} </a>! Rol: <span class="rolStyleProducts">{{user.rol}}</span></p>
+    <a class="cerrarSesionStyle" href="/api/sessions/logout">Cerrar Sesion</a>
+</div>
+<h1 class="titleProducts">🐶 - Nuestros Productos - 🐱</h1>
 <div class="divFlex">
     {{#each products}}
     <div class="divMain">
