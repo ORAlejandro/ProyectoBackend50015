@@ -37,6 +37,7 @@ router.post("/login", async (req, res) => {
                     age: user.age,
                     first_name: user.first_name,
                     last_name: user.last_name,
+                    rol: user.rol
                 };
                 
                 res.redirect("/products");

@@ -10,6 +10,12 @@ router.get("/", (req, res) => {
 });
 
 router.get("/products", async (req, res) => {
+
+    if(!req.session.login) {
+        res.redirect("/login");
+        return
+    }
+
     try {
         const { page = 1, limit = 2 } = req.query;
         const products = await productManager.getProducts({
