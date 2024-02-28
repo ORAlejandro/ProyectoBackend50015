@@ -22,6 +22,7 @@ router.post("/login", async (req, res) => {
         if(email == admin.email && password == admin.password) {
             req.session.login = true;
             req.session.user = { ...admin };
+            req.session.admin = true;
             res.redirect("/products");
             return
         };

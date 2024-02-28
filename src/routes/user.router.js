@@ -3,7 +3,7 @@ const router = express.Router();
 const UserModel = require("../dao/models/user.model.js");
 
 router.post("/", async (req, res) => {
-    const { first_name, last_name, email, password, age } = req.body;
+    const { first_name, last_name, email, password, age, rol = "usuario" } = req.body;
 
     try {
         
@@ -15,7 +15,7 @@ router.post("/", async (req, res) => {
             });
         }
 
-        const newUser = await UserModel.create({ first_name, last_name, email, password, age });
+        const newUser = await UserModel.create({ first_name, last_name, email, password, age, rol });
 
         req.session.login = true;
  
