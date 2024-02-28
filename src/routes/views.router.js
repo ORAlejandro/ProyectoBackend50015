@@ -9,7 +9,6 @@ router.get("/", (req, res) => {
     res.redirect("/login");
 });
 
-//Renderizar productos por paginas
 router.get("/products", async (req, res) => {
     try {
         const { page = 1, limit = 2 } = req.query;
@@ -22,7 +21,7 @@ router.get("/products", async (req, res) => {
             const { _id, ...rest } = product.toObject();
             return rest;
         });
-        //res.render("profile", { user: req.session.user });
+
         res.render("products", {
             products: newArray,
             hasPrevPage: products.hasPrevPage,
