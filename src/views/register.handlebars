@@ -1,25 +1,21 @@
-<form action="/api/users" method="post">
-    <label for="first_name">First Name:</label>
-    <input type="text" id="first_name" name="first_name" required>
-    <br>
-    <label for="last_name">Last Name:</label>
-    <input type="text" id="last_name" name="last_name" required>
-    <br>
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <label for="age">Age:</label>
-    <input type="number" id="age" name="age" required>
-    <br>
-    <!--
-        <label for="usuario">Usuario:</label>
-        <input type="text" id="usuario" name="usuario" value="usuario" readonly>
-        <br>
-     -->
-    <button type="submit">Register</button>
-
-    <p>¿Ya tenes cuenta? <a href="/login">Inicia Sesion</a></p>
-</form>
+<main class="mainRegister">
+    <h2 class="h2Register">Registrate</h2>
+    <section class="registerFlex">
+        <form action="/api/users" method="post">
+            <label class="labelForm" for="first_name">First Name</label>
+            <input class="inputForm" placeholder="Alejandro" type="text" id="first_name" name="first_name" required>
+            <label class="labelForm" for="last_name">Last Name</label>
+            <input class="inputForm" placeholder="Ortega" type="text" id="last_name" name="last_name" required>
+            <label class="labelForm" for="email">Email</label>
+            <input class="inputForm" placeholder="Alejandro@ortega.com" type="email" id="email" name="email" required>
+            <label class="labelForm" for="password">Password</label>
+            <input class="inputForm" placeholder="Pass1234" type="password" id="password" name="password" required>
+            <label class="labelForm" for="age">Age</label>
+            <input class="inputForm" placeholder="18" type="number" id="age" name="age" required>
+            <div class="divBtnRegister">
+                <button class="btnRegister" type="submit">Register</button>
+            </div>
+            <p>¿Ya tenes cuenta? <a class="loginRegister" href="/login">Inicia Sesion</a></p>
+    </section>
+    </form>
+</main>
