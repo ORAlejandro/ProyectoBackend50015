@@ -1,12 +1,15 @@
-<h1>Login</h1>
-<form action="/api/sessions/login" method="POST">
-    <label for="email">Email:</label>
-    <input type="email" id="email" name="email" required>
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password" required>
-    <br>
-    <button type="submit">Login</button>
-
-    <p>¿No tenes cuenta? <a href="/register">Registrate</a></p>
-</form>
+<main class="mainRegister">
+    <section class="loginFlex">
+        <h2 class="h2Login">Login</h2>
+        <form action="/api/sessions/login" method="POST">
+            <label class="labelForm" for="email">Email:</label>
+            <input placeholder="email@example.com" class="inputForm" type="email" id="email" name="email" required>
+            <label class="labelForm" for="password">Password:</label>
+            <input placeholder="password123" class="inputForm" type="password" id="password" name="password" required>
+            <div class="divBtnLogin">
+                <button class="btnLogin" type="submit">Login</button>
+            </div>
+            <p class="textAdcLogin">¿No tenes cuenta? <a class="loginRegister" href="/register">Registrate</a></p>
+        </form>
+    </section>
+</main>

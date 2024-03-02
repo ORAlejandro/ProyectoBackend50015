@@ -284,3 +284,48 @@ body {
   color: #729e33;
   text-decoration: none;
 }
+
+/* LOGIN.HANDLEBARS */
+
+.loginFlex {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.h2Login {
+  text-align: center;
+  text-transform: uppercase;
+  font-size: 35px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+}
+
+.divBtnLogin {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnLogin {
+  cursor: pointer;
+  text-transform: uppercase;
+  font-weight: 500;
+  padding: 10px 45px;
+  border: 1px solid rgb(104, 104, 104, 0.5);
+  background: linear-gradient(to bottom, #BEFD73, #B7F57A, #A4F9A1);
+  border-radius: 7px;
+  margin-bottom: 20px;
+}
+
+.btnLogin:hover{
+  background: #A4F9A1;
+}
+
+.btnLogin:active{
+  background: #BEFD73;
+}
+
+.textAdcLogin {
+  text-align: center;
+}
