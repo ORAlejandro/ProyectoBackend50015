@@ -285,6 +285,10 @@ body {
   text-decoration: none;
 }
 
+.textAdcRegister{
+  text-align: center;
+}
+
 /* LOGIN.HANDLEBARS */
 
 .loginFlex {
