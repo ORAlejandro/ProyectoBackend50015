@@ -6,6 +6,8 @@ const cookieParser = require("cookie-parser");
 const session = require("express-session");
 const MongoStore = require("connect-mongo");
 const PUERTO = 8080;
+const passport = require("passport");
+const initializePassport = require("./config/passport.config.js");
 require("./database.js");
 
 const productsRouter = require("./routes/products.router");
@@ -28,6 +30,10 @@ app.use(session({
         mongoUrl: "mongodb+srv://aleortega:coderhouse@cluster0.oprbhbr.mongodb.net/ecommerce?retryWrites=true&w=majority"
     })
 }))
+
+initializePassport();
+app.use(passport.initialize());
+app.use(passport.session());
 
 //CFG Handlebars
 app.engine("handlebars", exphbs.engine());
