@@ -1,6 +1,8 @@
 const express = require("express");
 const router = express.Router();
 const UserModel = require("../dao/models/user.model.js");
+const { createHash } = require("../utils/hashBcrypt.js");
+
 
 router.post("/", async (req, res) => {
     const { first_name, last_name, email, password, age, rol = "usuario" } = req.body;
@@ -11,11 +13,11 @@ router.post("/", async (req, res) => {
         if (existingUser) {
             return res.status(400).send({
                 status: "error",
-                message: "El correo electronica ya se encuentra registrado"
+                message: "El correo electronico ya se encuentra registrado"
             });
         }
 
-        const newUser = await UserModel.create({ first_name, last_name, email, password, age, rol });
+        const newUser = await UserModel.create({ first_name, last_name, email, password:createHash(password), age, rol });
 
         req.session.login = true;
  

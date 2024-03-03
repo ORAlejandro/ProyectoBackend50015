@@ -1,6 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const UserModel = require("../dao/models/user.model.js");
+const { isValidPassword } = require("../utils/hashBcrypt.js");
 
 router.post("/login", async (req, res) => {
 
@@ -29,8 +30,8 @@ router.post("/login", async (req, res) => {
 
         if (user) {
 
-            if (user.password == password) {
-
+            //if (user.password == password) {
+            if(isValidPassword(password, user)){
                 req.session.login = true;
                 req.session.user = {
                     email: user.email,
