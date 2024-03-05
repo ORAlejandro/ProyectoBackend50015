@@ -3,10 +3,13 @@ const local = require("passport-local");
 const UserModel = require("../dao/models/user.model.js");
 const { createHash, isValidPassword } = require("../utils/hashBcrypt.js");
 
+//Pasport Github:
+const GitHubStrategy = require("passport-github2");
+
+//Pasport Local:
 const LocalStrategy = local.Strategy;
 
 const initializePassport = () => {
-
     passport.use("register", new LocalStrategy({
         passReqToCallback: true,
         usernameField: "email"
@@ -55,6 +58,32 @@ const initializePassport = () => {
         let user = await UserModel.findById({_id: id});
         done(null, user);
     })
+
+    //GitHubStrategy
+    passport.use("github", new GitHubStrategy({
+        clientID: "Iv1.5ce667be059a4d3f",
+        clientSecret: "2349a098368a20b8f2fdfa11ffe289c8a2c19f71",
+        callbackURL: "http://localhost:8080/api/sessions/githubcallback"
+    }, async (accessToken, refreshToken, profile, done) => {
+        try {
+            let user = await UserModel.findOne({email: profile._json.email})
+            if(!user) {
+                let newUser = {
+                    first_name: profile._json.name,
+                    last_name: "",
+                    age: 1,
+                    email: profile._json.email,
+                    password: ""
+                }
+                let result = await UserModel.create(newUser);
+                done(null, result)
+            } else {
+                done(null, user);
+            }
+        } catch (error) {
+            return done(error);
+        }
+    }))
 }
 
 module.exports = initializePassport;
