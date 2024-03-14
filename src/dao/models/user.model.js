@@ -21,7 +21,8 @@ const userSchema = mongoose.Schema({
         type: Number
     },
     rol: {
-        type: String
+        type: String,
+        default: "usuario"
     }
 });
 
