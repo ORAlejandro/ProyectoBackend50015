@@ -23,6 +23,10 @@ const userSchema = mongoose.Schema({
     rol: {
         type: String,
         default: "usuario"
+    },
+    cart: {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "carts"
     }
 });
 
