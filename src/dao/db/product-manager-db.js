@@ -81,6 +81,22 @@ class ProductManager {
         }
     }
 
+    /*getProductById = async (req, res) => {
+        const id = req.params.pid;
+        try {
+            const product = await ProductModel.findById(id);
+            if(!product) {
+                return res.json({error: "ERROR: Producto no encontrado"})
+            }
+            res.json(product);
+        } catch (error) {
+            console.log("ERROR: No se pudo obtener el producto por id", error);
+            res.status(500).json({
+                error: "ERROR: El servidor no pudo encontrar el producto"
+            });
+        }
+    }*/
+
     async getProductById(id) {
         try {
             const product = await ProductModel.findById(id);

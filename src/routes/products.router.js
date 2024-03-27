@@ -40,6 +40,8 @@ router.get("/", async (req, res) => {
     }
 });
 
+//router.get("/:pid", productManager.getProductById())
+
 router.get("/:pid", async (req, res) => {
     const id = req.params.pid;
 
