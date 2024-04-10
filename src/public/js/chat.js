@@ -1,5 +1,4 @@
 const socket = io(); 
-
 let user; 
 const chatBox = document.getElementById("chatBox");
 
@@ -8,7 +7,7 @@ Swal.fire({
     input: "text",
     text: "Bienvenido/a, ¿Cómo debemos llamarte?", 
     inputValidator: (value) => {
-        return !value && "Necesitas escribir un nombre para continuar"
+        return !value && "No podes acceder al chat sin un nombre"
     }, 
     allowOutsideClick: false,
 }).then( result => {

@@ -2,7 +2,15 @@
 <p>Bienvenido/a {{user.first_name}} {{user.last_name}}!</p>
 <p>Email: {{user.email}}</p>
 <p>Edad: {{user.age}}</p>
-<p>Rol: {{user.rol}}</p>
-<a href="/products">Ir a products</a>
+<p>Role: {{user.rol}}</p>
 <br>
-<a href="/api/sessions/logout">Logout</a>
+{{#if this.isAdmin}}
+    <a href="/realtimeproducts">Administrador de Productos</a>
+{{else}}
+        <a href="/chat">Chat</a>
+        <a href="/products">Tienda</a>
+{{/if}}
+<br>
+<form action="/api/users/logout" method="POST">
+    <button type="submit">Logout</button>
+</form>

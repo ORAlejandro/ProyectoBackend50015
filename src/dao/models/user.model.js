@@ -20,8 +20,9 @@ const userSchema = mongoose.Schema({
     age: {
         type: Number
     },
-    rol: {
+    role: {
         type: String,
+        enum: ["admin", "usuario"],
         default: "usuario"
     },
     cart: {

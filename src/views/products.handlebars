@@ -1,5 +1,6 @@
 <div class="topProducts">
-    <p>Bienvenido/a <a class="firstLastName" href="/profile"> {{user.first_name}} {{user.last_name}} </a>! Rol: <span class="rolStyleProducts">{{user.rol}}</span></p>
+    <p>Bienvenido/a <a class="firstLastName" href="/profile"> {{user.first_name}} {{user.last_name}} </a>! Rol: <span
+            class="rolStyleProducts">{{user.rol}}</span></p>
     <a class="cerrarSesionStyle" href="/api/sessions/logout">Cerrar Sesion</a>
 </div>
 <h1 class="titleProducts">🐶 - Nuestros Productos - 🐱</h1>
@@ -10,7 +11,9 @@
         <p class="divDescription"> {{this.description}} </p>
         <p class="divPrice"> ${{this.price}} </p>
         <div class="flexBtn">
-            <button class="divBtn">Agregar</button>
+            <form action="/api/carts/{{../cartId}}/product/{{id}}" method="POST"></form>
+                <button class="divBtn" type="submit">Agregar</button>
+            </form>
         </div>
     </div>
     {{/each}}
