@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ProductController = require("../dao/db/product.controller.js");
-const productController = new ProductController;
+const productController = new ProductController();
 
 router.get("/", productController.getProducts);
 router.get("/:pid", productController.getProductsById);

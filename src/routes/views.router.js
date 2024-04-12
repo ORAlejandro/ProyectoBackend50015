@@ -1,7 +1,7 @@
 const express = require("express");
 const router = express.Router();
 const ViewsController = require("../dao/db/view.controller.js");
-const viewsController = new ViewsController;
+const viewsController = new ViewsController();
 const passport = require("passport");
 const checkUserRole = require("../middleware/checkrole.middleware.js");
 

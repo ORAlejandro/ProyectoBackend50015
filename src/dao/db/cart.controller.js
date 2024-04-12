@@ -1,5 +1,10 @@
 const CartServices = require("../../services/cart.services.js");
 const cartServices = new CartServices;
+const TicketModel = require("../models/ticket.model.js");
+const UserModel = require("../models/user.model.js");
+const ProductServices = require("../../services/product.services.js");
+const productServices = new ProductServices;
+const { generateUniqueCode, calculateTotal } = require("../../utils/cart.utils.js");
 
 class CartController {
     async newCart(req, res) {
@@ -102,6 +107,41 @@ class CartController {
             });
         } catch (error) {
             res.status(500).send("Error al vaciar el carrito (f/controller)");
+        }
+    }
+
+    async finalizePurchase(req, res) {
+        const cartId = req.params.cid;
+        try {
+            const cart = await cartServices.getProductsFromCart(cartId);
+            const products = cart.products;
+            const productsNotAvailable = [];
+            for(const item of products) {
+                const productId = item.product;
+                const product = await productServices.getProductsById(productId);
+                if(product.stock >= item.quantity) {
+                    product.stock -= item.quantity;
+                    await product.save();
+                } else {
+                    productsNotAvailable.push(productId);
+                }
+            }
+            const userWithCart = await UserModel.findOne({ cart: cartId });
+            const ticket = new TicketModel({
+                code: generateUniqueCode(),
+                purchase_datetime: new Date(),
+                amount: calculateTotal(cart.products),
+                purchaser: userWithCart._id
+            });
+            await ticket.save();
+            cart.products = cart.products.filter(item => productsNotAvailable.some(productId => productId.equals(item.product)));
+            await cart.save();
+            res.status(200).json({
+                message: "productos no disponibles",
+                productsNotAvailable,
+            });
+        } catch (error) {
+            res.status(500).send("Error al finalizar la compra");
         }
     }
 }

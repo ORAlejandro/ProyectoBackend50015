@@ -4,7 +4,44 @@
     <div class="cartContainer">
         <p class="cartProduct"> {{this.product.title}} </p>
         <p class="cartQuantity">Cantidad: {{this.quantity}}</p>
+        <p>Precio: ${{this.product.totalPrice}}</p>
+        <button onclick="eliminarProducto('{{this.cartId}}', '{{this.product._id}}')">Eliminar</button>
         <hr>
     </div>
 {{/each}}
 </div>
+
+<button onclick="vaciarCarrito('{{cartId}}')">Vaciar Carrito</button>
+<p>Total de la compra: ${{totalPurchase}}</p>
+<!-- CLASE CREADA EN PUBLIC JS FALTA IMPORTAR Y APLICAR -->
+<script>
+    function eliminarProducto(cartId, productId) {
+        fetch(`/api/carts/${cartId}/product/${productId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al eliminar el producto del carrito');
+                }
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+
+    function vaciarCarrito(cartId) {
+        fetch(`/api/carts/${cartId}`, {
+            method: 'DELETE'
+        })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Error al vaciar el carrito');
+                }
+                location.reload();
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+    }
+</script>

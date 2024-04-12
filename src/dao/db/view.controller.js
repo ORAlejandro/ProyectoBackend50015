@@ -51,11 +51,19 @@ class ViewsController {
                     message: "carrito no encontrado"
                 });
             }
-            const productsInCart = cart.products.map(item => ({
-                product: item.product.toObject(),
-                quantity: item.quantity
-            }));
-            res.render("carts", { products: productsInCart });
+            let totalPurchase = 0;
+            const productsInCart = cart.products.map(item => {
+                const product = item.product.toObject();
+                const quantity = item.quantity;
+                const totalPrice = product.price * quantity;
+                totalPurchase += totalPrice;
+                return {
+                    product: { ...product, totalPrice },
+                    quantity,
+                    cartId
+                };
+            });
+            res.render("carts", { products: productsInCart, totalPurchase, cartId });
         } catch (error) {
             console.error("Error en el renderCart (f/controller)");
             res.status(500).send({
